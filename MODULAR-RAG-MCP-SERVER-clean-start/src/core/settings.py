@@ -24,6 +24,15 @@ class ProviderSettings:
 
 
 @dataclass(frozen=True)
+class VisionLLMSettings(ProviderSettings):
+    azure_endpoint: str | None = None
+    api_version: str = "2024-02-15-preview"
+    deployment_name: str | None = None
+    max_image_size: int = 2048
+    max_tokens: int = 1000
+
+
+@dataclass(frozen=True)
 class SplitterSettings:
     provider: str = "recursive"
     chunk_size: int = 1000
@@ -68,7 +77,7 @@ class ObservabilitySettings:
 @dataclass(frozen=True)
 class Settings:
     llm: ProviderSettings
-    vision_llm: ProviderSettings
+    vision_llm: VisionLLMSettings
     embedding: ProviderSettings
     splitter: SplitterSettings
     vector_store: VectorStoreSettings
@@ -117,7 +126,7 @@ def load_settings(path: str | Path = "config/settings.yaml") -> Settings:
 
     settings = Settings(
         llm=_provider_settings(raw.get("llm")),
-        vision_llm=_provider_settings(raw.get("vision_llm")),
+        vision_llm=_vision_llm_settings(raw.get("vision_llm")),
         embedding=_provider_settings(raw.get("embedding")),
         splitter=SplitterSettings(**_section(raw, "splitter")),
         vector_store=VectorStoreSettings(**_section(raw, "vector_store")),
@@ -137,6 +146,21 @@ def _provider_settings(value: Any) -> ProviderSettings:
         model=section.get("model"),
         api_key=section.get("api_key"),
         base_url=section.get("base_url"),
+    )
+
+
+def _vision_llm_settings(value: Any) -> VisionLLMSettings:
+    section = value if isinstance(value, dict) else {}
+    return VisionLLMSettings(
+        provider=section.get("provider"),
+        model=section.get("model"),
+        api_key=section.get("api_key"),
+        base_url=section.get("base_url"),
+        azure_endpoint=section.get("azure_endpoint"),
+        api_version=section.get("api_version", "2024-02-15-preview"),
+        deployment_name=section.get("deployment_name"),
+        max_image_size=section.get("max_image_size", 2048),
+        max_tokens=section.get("max_tokens", 1000),
     )
 
 

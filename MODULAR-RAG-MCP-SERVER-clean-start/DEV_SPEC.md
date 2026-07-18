@@ -1974,7 +1974,7 @@ dashboard:
 | B7.7 | LLM Reranker 实现 | [x] | 2026-07-19 | 支持 prompt 驱动排序、严格 JSON 校验和失败回退信号 |
 | B7.8 | Cross-Encoder Reranker 实现 | [x] | 2026-07-19 | 支持 Top-M 打分排序、模型懒加载和失败回退信号 |
 | B8 | Vision LLM 抽象接口与工厂集成 | [x] | 2026-07-19 | 支持图文输入、图片预处理扩展点和独立 provider 路由 |
-| B9 | Azure Vision LLM 实现 | [ ] | | |
+| B9 | Azure Vision LLM 实现 | [x] | 2026-07-19 | 支持路径/base64 图片、自动压缩和 Azure 错误码解析 |
 
 #### 阶段 C：Ingestion Pipeline MVP
 

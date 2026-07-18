@@ -7,6 +7,12 @@ llm:
 vision_llm:
   provider: azure
   model: gpt-4o
+  api_key: ${AZURE_OPENAI_API_KEY}
+  azure_endpoint: ${AZURE_OPENAI_ENDPOINT}
+  api_version: 2024-02-15-preview
+  deployment_name: ${AZURE_OPENAI_VISION_DEPLOYMENT}
+  max_image_size: 2048
+  max_tokens: 1000
 
 embedding:
   provider: ollama

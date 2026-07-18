@@ -4,6 +4,7 @@ from typing import ClassVar
 
 from core.settings import Settings
 from libs.llm.azure_llm import AzureLLM
+from libs.llm.azure_vision_llm import AzureVisionLLM
 from libs.llm.base_llm import BaseLLM
 from libs.llm.base_vision_llm import BaseVisionLLM
 from libs.llm.deepseek_llm import DeepSeekLLM
@@ -22,7 +23,9 @@ class LLMFactory:
         "ollama": OllamaLLM,
         "openai": OpenAILLM,
     }
-    _vision_providers: ClassVar[dict[str, type[BaseVisionLLM]]] = {}
+    _vision_providers: ClassVar[dict[str, type[BaseVisionLLM]]] = {
+        "azure": AzureVisionLLM
+    }
 
     @classmethod
     def register_provider(cls, name: str, provider_class: type[BaseLLM]) -> None:
