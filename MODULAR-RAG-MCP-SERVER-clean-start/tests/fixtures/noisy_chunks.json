@@ -1,0 +1,42 @@
+[
+  {
+    "name": "typical_noise_scenario",
+    "input": "页眉：内部资料\n\n  RAG   系统用于检索增强生成。  \n\n第 1 页，共 3 页",
+    "expected": "RAG 系统用于检索增强生成。"
+  },
+  {
+    "name": "ocr_errors",
+    "input": "OCR  识别结果\n\n包含   多余空格。",
+    "expected": "OCR 识别结果\n\n包含 多余空格。"
+  },
+  {
+    "name": "page_header_footer",
+    "input": "HEADER: Company Report\n正文内容。\nFooter: Confidential",
+    "expected": "正文内容。"
+  },
+  {
+    "name": "excessive_whitespace",
+    "input": "第一段。\n\n\n\n第二段。   \n",
+    "expected": "第一段。\n\n第二段。"
+  },
+  {
+    "name": "format_markers",
+    "input": "<!-- 导出标记 -->\n----\n有效内容。\n****",
+    "expected": "有效内容。"
+  },
+  {
+    "name": "clean_text",
+    "input": "# 标题\n\n- 项目一\n- 项目二",
+    "expected": "# 标题\n\n- 项目一\n- 项目二"
+  },
+  {
+    "name": "code_blocks",
+    "input": "示例：\n\n```python\ndef hello():\n    print(\"hello   world\")\n```",
+    "expected": "示例：\n\n```python\ndef hello():\n    print(\"hello   world\")\n```"
+  },
+  {
+    "name": "mixed_noise",
+    "input": "页眉: 技术手册\n<!-- page break -->\n## 安装\n\n运行  `pip install app`。\n======\nPage 2 of 5",
+    "expected": "## 安装\n\n运行 `pip install app`。"
+  }
+]

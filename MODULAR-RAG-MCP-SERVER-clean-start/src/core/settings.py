@@ -75,6 +75,16 @@ class ObservabilitySettings:
 
 
 @dataclass(frozen=True)
+class ChunkRefinerSettings:
+    use_llm: bool = False
+
+
+@dataclass(frozen=True)
+class IngestionSettings:
+    chunk_refiner: ChunkRefinerSettings = field(default_factory=ChunkRefinerSettings)
+
+
+@dataclass(frozen=True)
 class Settings:
     llm: ProviderSettings
     vision_llm: VisionLLMSettings
@@ -85,6 +95,7 @@ class Settings:
     rerank: RerankSettings
     evaluation: EvaluationSettings
     observability: ObservabilitySettings
+    ingestion: IngestionSettings = field(default_factory=IngestionSettings)
 
 
 def validate_settings(settings: Settings) -> None:
@@ -134,6 +145,7 @@ def load_settings(path: str | Path = "config/settings.yaml") -> Settings:
         rerank=RerankSettings(**_section(raw, "rerank")),
         evaluation=EvaluationSettings(**_section(raw, "evaluation")),
         observability=ObservabilitySettings(**_section(raw, "observability")),
+        ingestion=_ingestion_settings(raw.get("ingestion")),
     )
     validate_settings(settings)
     return settings
@@ -161,6 +173,15 @@ def _vision_llm_settings(value: Any) -> VisionLLMSettings:
         deployment_name=section.get("deployment_name"),
         max_image_size=section.get("max_image_size", 2048),
         max_tokens=section.get("max_tokens", 1000),
+    )
+
+
+def _ingestion_settings(value: Any) -> IngestionSettings:
+    section = value if isinstance(value, dict) else {}
+    chunk_refiner = section.get("chunk_refiner")
+    chunk_refiner_section = chunk_refiner if isinstance(chunk_refiner, dict) else {}
+    return IngestionSettings(
+        chunk_refiner=ChunkRefinerSettings(**chunk_refiner_section)
     )
 
 

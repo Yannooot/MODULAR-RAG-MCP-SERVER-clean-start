@@ -1,1 +1,4 @@
-Refine the chunk while preserving its original meaning.
+清理下面文本中的页眉、页脚、格式噪声和多余空白，同时完整保留原意、事实、Markdown 结构与代码。
+只输出清理后的文本，不要解释：
+
+{text}

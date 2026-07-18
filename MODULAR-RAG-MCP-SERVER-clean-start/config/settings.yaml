@@ -49,3 +49,7 @@ evaluation:
 observability:
   enabled: true
   log_file: ./logs/traces.jsonl
+
+ingestion:
+  chunk_refiner:
+    use_llm: true
