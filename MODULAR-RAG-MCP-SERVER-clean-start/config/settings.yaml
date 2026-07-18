@@ -1,0 +1,4 @@
+llm:
+  provider: deepseek
+  model: deepseek-chat
+  api_key: ${DEEPSEEK_API_KEY}
