@@ -5,6 +5,7 @@ from typing import ClassVar
 from core.settings import Settings
 from libs.llm.azure_llm import AzureLLM
 from libs.llm.base_llm import BaseLLM
+from libs.llm.base_vision_llm import BaseVisionLLM
 from libs.llm.deepseek_llm import DeepSeekLLM
 from libs.llm.ollama_llm import OllamaLLM
 from libs.llm.openai_llm import OpenAILLM
@@ -21,6 +22,7 @@ class LLMFactory:
         "ollama": OllamaLLM,
         "openai": OpenAILLM,
     }
+    _vision_providers: ClassVar[dict[str, type[BaseVisionLLM]]] = {}
 
     @classmethod
     def register_provider(cls, name: str, provider_class: type[BaseLLM]) -> None:
@@ -40,8 +42,34 @@ class LLMFactory:
         return provider_class(settings)
 
     @classmethod
+    def register_vision_provider(
+        cls, name: str, provider_class: type[BaseVisionLLM]
+    ) -> None:
+        if not isinstance(provider_class, type) or not issubclass(
+            provider_class, BaseVisionLLM
+        ):
+            raise TypeError("Vision LLM provider must implement BaseVisionLLM")
+        cls._vision_providers[cls._normalize_name(name)] = provider_class
+
+    @classmethod
+    def create_vision_llm(cls, settings: Settings) -> BaseVisionLLM:
+        provider_name = cls._normalize_name(settings.vision_llm.provider)
+        provider_class = cls._vision_providers.get(provider_name)
+        if provider_class is None:
+            available = ", ".join(cls.list_vision_providers()) or "none"
+            raise LLMFactoryError(
+                f"Unknown Vision LLM provider '{provider_name}'. "
+                f"Available providers: {available}"
+            )
+        return provider_class(settings)
+
+    @classmethod
     def list_providers(cls) -> tuple[str, ...]:
         return tuple(sorted(cls._providers))
+
+    @classmethod
+    def list_vision_providers(cls) -> tuple[str, ...]:
+        return tuple(sorted(cls._vision_providers))
 
     @staticmethod
     def _normalize_name(name: str | None) -> str:

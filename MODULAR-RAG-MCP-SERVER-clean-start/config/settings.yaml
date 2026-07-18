@@ -4,6 +4,10 @@ llm:
   api_key: ${DEEPSEEK_API_KEY}
   base_url: https://api.deepseek.com
 
+vision_llm:
+  provider: azure
+  model: gpt-4o
+
 embedding:
   provider: ollama
   model: nomic-embed-text

@@ -68,6 +68,7 @@ class ObservabilitySettings:
 @dataclass(frozen=True)
 class Settings:
     llm: ProviderSettings
+    vision_llm: ProviderSettings
     embedding: ProviderSettings
     splitter: SplitterSettings
     vector_store: VectorStoreSettings
@@ -116,6 +117,7 @@ def load_settings(path: str | Path = "config/settings.yaml") -> Settings:
 
     settings = Settings(
         llm=_provider_settings(raw.get("llm")),
+        vision_llm=_provider_settings(raw.get("vision_llm")),
         embedding=_provider_settings(raw.get("embedding")),
         splitter=SplitterSettings(**_section(raw, "splitter")),
         vector_store=VectorStoreSettings(**_section(raw, "vector_store")),
