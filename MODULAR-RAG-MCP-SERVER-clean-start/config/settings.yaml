@@ -9,6 +9,9 @@ embedding:
   model: nomic-embed-text
   base_url: http://localhost:11434
 
+splitter:
+  provider: recursive
+
 vector_store:
   backend: chroma
   persist_path: ./data/db/chroma

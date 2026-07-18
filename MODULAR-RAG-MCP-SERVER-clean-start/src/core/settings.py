@@ -24,6 +24,11 @@ class ProviderSettings:
 
 
 @dataclass(frozen=True)
+class SplitterSettings:
+    provider: str = "recursive"
+
+
+@dataclass(frozen=True)
 class VectorStoreSettings:
     backend: str | None = None
     persist_path: str | None = None
@@ -61,6 +66,7 @@ class ObservabilitySettings:
 class Settings:
     llm: ProviderSettings
     embedding: ProviderSettings
+    splitter: SplitterSettings
     vector_store: VectorStoreSettings
     retrieval: RetrievalSettings
     rerank: RerankSettings
@@ -108,6 +114,7 @@ def load_settings(path: str | Path = "config/settings.yaml") -> Settings:
     settings = Settings(
         llm=_provider_settings(raw.get("llm")),
         embedding=_provider_settings(raw.get("embedding")),
+        splitter=SplitterSettings(**_section(raw, "splitter")),
         vector_store=VectorStoreSettings(**_section(raw, "vector_store")),
         retrieval=RetrievalSettings(**_section(raw, "retrieval")),
         rerank=RerankSettings(**_section(raw, "rerank")),
