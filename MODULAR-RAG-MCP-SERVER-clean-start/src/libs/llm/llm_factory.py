@@ -6,6 +6,7 @@ from core.settings import Settings
 from libs.llm.azure_llm import AzureLLM
 from libs.llm.base_llm import BaseLLM
 from libs.llm.deepseek_llm import DeepSeekLLM
+from libs.llm.ollama_llm import OllamaLLM
 from libs.llm.openai_llm import OpenAILLM
 
 
@@ -17,6 +18,7 @@ class LLMFactory:
     _providers: ClassVar[dict[str, type[BaseLLM]]] = {
         "azure": AzureLLM,
         "deepseek": DeepSeekLLM,
+        "ollama": OllamaLLM,
         "openai": OpenAILLM,
     }
 
