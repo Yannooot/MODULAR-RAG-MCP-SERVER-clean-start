@@ -8,7 +8,11 @@ version = "0.1.0"
 description = "A modular RAG server exposed through MCP."
 readme = "README.md"
 requires-python = ">=3.10"
-dependencies = ["python-dotenv>=1.0", "PyYAML>=6.0"]
+dependencies = [
+    "langchain-text-splitters>=1.1,<2.0",
+    "python-dotenv>=1.0",
+    "PyYAML>=6.0",
+]
 
 [project.optional-dependencies]
 dev = ["pytest>=8.0"]

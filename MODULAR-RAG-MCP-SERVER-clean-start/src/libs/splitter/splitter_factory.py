@@ -4,6 +4,7 @@ from typing import ClassVar
 
 from core.settings import Settings
 from libs.splitter.base_splitter import BaseSplitter
+from libs.splitter.recursive_splitter import RecursiveSplitter
 
 
 class SplitterFactoryError(ValueError):
@@ -11,7 +12,9 @@ class SplitterFactoryError(ValueError):
 
 
 class SplitterFactory:
-    _providers: ClassVar[dict[str, type[BaseSplitter]]] = {}
+    _providers: ClassVar[dict[str, type[BaseSplitter]]] = {
+        "recursive": RecursiveSplitter
+    }
 
     @classmethod
     def register_provider(

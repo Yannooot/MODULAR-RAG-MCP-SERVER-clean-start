@@ -26,6 +26,8 @@ class ProviderSettings:
 @dataclass(frozen=True)
 class SplitterSettings:
     provider: str = "recursive"
+    chunk_size: int = 1000
+    chunk_overlap: int = 200
 
 
 @dataclass(frozen=True)
