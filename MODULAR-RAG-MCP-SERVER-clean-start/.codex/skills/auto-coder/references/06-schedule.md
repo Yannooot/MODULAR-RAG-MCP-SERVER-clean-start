@@ -57,7 +57,7 @@
 | B6 | Evaluator 抽象接口与工厂 | [x] | 2026-07-19 | 自定义 Hit Rate 和 MRR 指标已实现 |
 | B7.1 | OpenAI-Compatible LLM 实现 | [x] | 2026-07-19 | 已支持 OpenAI、Azure 和 DeepSeek |
 | B7.2 | Ollama LLM 实现 | [x] | 2026-07-19 | 本地聊天接口和网络错误处理已实现 |
-| B7.3 | OpenAI & Azure Embedding 实现 | [ ] | | |
+| B7.3 | OpenAI & Azure Embedding 实现 | [x] | 2026-07-19 | 支持批量嵌入和 Azure 协议 |
 | B7.4 | Ollama Embedding 实现 | [ ] | | |
 | B7.5 | Recursive Splitter 默认实现 | [ ] | | |
 | B7.6 | ChromaStore 默认实现 | [ ] | | |

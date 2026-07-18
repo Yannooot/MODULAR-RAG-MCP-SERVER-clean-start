@@ -3,7 +3,9 @@
 from typing import ClassVar
 
 from core.settings import Settings
+from libs.embedding.azure_embedding import AzureEmbedding
 from libs.embedding.base_embedding import BaseEmbedding
+from libs.embedding.openai_embedding import OpenAIEmbedding
 
 
 class EmbeddingFactoryError(ValueError):
@@ -11,7 +13,10 @@ class EmbeddingFactoryError(ValueError):
 
 
 class EmbeddingFactory:
-    _providers: ClassVar[dict[str, type[BaseEmbedding]]] = {}
+    _providers: ClassVar[dict[str, type[BaseEmbedding]]] = {
+        "azure": AzureEmbedding,
+        "openai": OpenAIEmbedding,
+    }
 
     @classmethod
     def register_provider(
