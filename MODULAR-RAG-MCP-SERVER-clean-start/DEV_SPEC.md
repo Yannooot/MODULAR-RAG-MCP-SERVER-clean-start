@@ -1963,7 +1963,7 @@ dashboard:
 | B2 | Embedding 抽象接口与工厂 | [x] | 2026-07-19 | BaseEmbedding、批量接口和工厂路由已实现 |
 | B3 | Splitter 抽象接口与工厂 | [x] | 2026-07-19 | BaseSplitter、策略配置和工厂路由已实现 |
 | B4 | VectorStore 抽象接口与工厂 | [x] | 2026-07-19 | VectorStore 契约、注册和工厂路由已实现 |
-| B5 | Reranker 抽象接口与工厂（含 None 回退） | [ ] | | |
+| B5 | Reranker 抽象接口与工厂（含 None 回退） | [x] | 2026-07-19 | BaseReranker、None 回退和工厂路由已实现 |
 | B6 | Evaluator 抽象接口与工厂 | [ ] | | |
 | B7.1 | OpenAI-Compatible LLM 实现 | [ ] | | |
 | B7.2 | Ollama LLM 实现 | [ ] | | |
