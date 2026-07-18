@@ -2,3 +2,33 @@ llm:
   provider: deepseek
   model: deepseek-chat
   api_key: ${DEEPSEEK_API_KEY}
+  base_url: https://api.deepseek.com
+
+embedding:
+  provider: ollama
+  model: nomic-embed-text
+  base_url: http://localhost:11434
+
+vector_store:
+  backend: chroma
+  persist_path: ./data/db/chroma
+
+retrieval:
+  sparse_backend: bm25
+  fusion_algorithm: rrf
+  top_k_dense: 20
+  top_k_sparse: 20
+  top_k_final: 10
+
+rerank:
+  backend: none
+  model: ""
+  top_m: 30
+
+evaluation:
+  backends: [custom]
+  golden_test_set: ./tests/fixtures/golden_test_set.json
+
+observability:
+  enabled: true
+  log_file: ./logs/traces.jsonl
