@@ -1,0 +1,1 @@
+Minimal sample document for automated tests.
