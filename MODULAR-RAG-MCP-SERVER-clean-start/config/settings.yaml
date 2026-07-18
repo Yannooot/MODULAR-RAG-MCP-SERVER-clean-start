@@ -18,6 +18,7 @@ splitter:
 vector_store:
   backend: chroma
   persist_path: ./data/db/chroma
+  collection_name: chunks
 
 retrieval:
   sparse_backend: bm25

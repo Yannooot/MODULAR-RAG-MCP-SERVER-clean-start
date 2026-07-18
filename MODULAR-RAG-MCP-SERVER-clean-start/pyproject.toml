@@ -9,6 +9,7 @@ description = "A modular RAG server exposed through MCP."
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
+    "chromadb>=1.5,<2.0",
     "langchain-text-splitters>=1.1,<2.0",
     "python-dotenv>=1.0",
     "PyYAML>=6.0",

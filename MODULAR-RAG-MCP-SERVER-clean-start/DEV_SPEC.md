@@ -1970,7 +1970,7 @@ dashboard:
 | B7.3 | OpenAI & Azure Embedding 实现 | [x] | 2026-07-19 | 支持批量嵌入和 Azure 协议 |
 | B7.4 | Ollama Embedding 实现 | [x] | 2026-07-19 | 支持本地批量向量生成和错误处理 |
 | B7.5 | Recursive Splitter 默认实现 | [x] | 2026-07-19 | 支持配置化 Markdown 递归切分 |
-| B7.6 | ChromaStore 默认实现 | [ ] | | |
+| B7.6 | ChromaStore 默认实现 | [x] | 2026-07-19 | 支持持久化写入、向量查询和 metadata 过滤 |
 | B7.7 | LLM Reranker 实现 | [ ] | | |
 | B7.8 | Cross-Encoder Reranker 实现 | [ ] | | |
 | B8 | Vision LLM 抽象接口与工厂集成 | [ ] | | |

@@ -34,6 +34,7 @@ class SplitterSettings:
 class VectorStoreSettings:
     backend: str | None = None
     persist_path: str | None = None
+    collection_name: str = "chunks"
 
 
 @dataclass(frozen=True)
