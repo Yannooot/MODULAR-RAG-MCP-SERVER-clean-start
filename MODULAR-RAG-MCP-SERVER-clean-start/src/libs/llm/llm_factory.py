@@ -3,7 +3,10 @@
 from typing import ClassVar
 
 from core.settings import Settings
+from libs.llm.azure_llm import AzureLLM
 from libs.llm.base_llm import BaseLLM
+from libs.llm.deepseek_llm import DeepSeekLLM
+from libs.llm.openai_llm import OpenAILLM
 
 
 class LLMFactoryError(ValueError):
@@ -11,7 +14,11 @@ class LLMFactoryError(ValueError):
 
 
 class LLMFactory:
-    _providers: ClassVar[dict[str, type[BaseLLM]]] = {}
+    _providers: ClassVar[dict[str, type[BaseLLM]]] = {
+        "azure": AzureLLM,
+        "deepseek": DeepSeekLLM,
+        "openai": OpenAILLM,
+    }
 
     @classmethod
     def register_provider(cls, name: str, provider_class: type[BaseLLM]) -> None:

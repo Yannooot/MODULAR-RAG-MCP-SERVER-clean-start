@@ -55,7 +55,7 @@
 | B4 | VectorStore 抽象接口与工厂 | [x] | 2026-07-19 | VectorStore 契约、注册和工厂路由已实现 |
 | B5 | Reranker 抽象接口与工厂（含 None 回退） | [x] | 2026-07-19 | BaseReranker、None 回退和工厂路由已实现 |
 | B6 | Evaluator 抽象接口与工厂 | [x] | 2026-07-19 | 自定义 Hit Rate 和 MRR 指标已实现 |
-| B7.1 | OpenAI-Compatible LLM 实现 | [ ] | | |
+| B7.1 | OpenAI-Compatible LLM 实现 | [x] | 2026-07-19 | 已支持 OpenAI、Azure 和 DeepSeek |
 | B7.2 | Ollama LLM 实现 | [ ] | | |
 | B7.3 | OpenAI & Azure Embedding 实现 | [ ] | | |
 | B7.4 | Ollama Embedding 实现 | [ ] | | |
