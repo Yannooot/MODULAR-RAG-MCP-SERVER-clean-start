@@ -4,6 +4,7 @@ from typing import ClassVar
 
 from core.settings import Settings
 from libs.reranker.base_reranker import BaseReranker, NoneReranker
+from libs.reranker.llm_reranker import LLMReranker
 
 
 class RerankerFactoryError(ValueError):
@@ -11,7 +12,10 @@ class RerankerFactoryError(ValueError):
 
 
 class RerankerFactory:
-    _providers: ClassVar[dict[str, type[BaseReranker]]] = {"none": NoneReranker}
+    _providers: ClassVar[dict[str, type[BaseReranker]]] = {
+        "llm": LLMReranker,
+        "none": NoneReranker,
+    }
 
     @classmethod
     def register_provider(
