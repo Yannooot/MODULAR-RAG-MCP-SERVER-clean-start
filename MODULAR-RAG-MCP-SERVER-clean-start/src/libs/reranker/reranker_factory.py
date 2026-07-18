@@ -4,6 +4,7 @@ from typing import ClassVar
 
 from core.settings import Settings
 from libs.reranker.base_reranker import BaseReranker, NoneReranker
+from libs.reranker.cross_encoder_reranker import CrossEncoderReranker
 from libs.reranker.llm_reranker import LLMReranker
 
 
@@ -13,6 +14,7 @@ class RerankerFactoryError(ValueError):
 
 class RerankerFactory:
     _providers: ClassVar[dict[str, type[BaseReranker]]] = {
+        "cross_encoder": CrossEncoderReranker,
         "llm": LLMReranker,
         "none": NoneReranker,
     }
