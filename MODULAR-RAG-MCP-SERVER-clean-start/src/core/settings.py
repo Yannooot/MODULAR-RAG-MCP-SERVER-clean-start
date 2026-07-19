@@ -25,6 +25,7 @@ class ProviderSettings:
 
 @dataclass(frozen=True)
 class VisionLLMSettings(ProviderSettings):
+    enabled: bool = False
     azure_endpoint: str | None = None
     api_version: str = "2024-02-15-preview"
     deployment_name: str | None = None
@@ -176,6 +177,7 @@ def _vision_llm_settings(value: Any) -> VisionLLMSettings:
         model=section.get("model"),
         api_key=section.get("api_key"),
         base_url=section.get("base_url"),
+        enabled=section.get("enabled", False),
         azure_endpoint=section.get("azure_endpoint"),
         api_version=section.get("api_version", "2024-02-15-preview"),
         deployment_name=section.get("deployment_name"),

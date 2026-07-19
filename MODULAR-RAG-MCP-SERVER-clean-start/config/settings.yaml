@@ -5,6 +5,7 @@ llm:
   base_url: https://api.deepseek.com
 
 vision_llm:
+  enabled: false
   provider: azure
   model: gpt-4o
   api_key: ${AZURE_OPENAI_API_KEY}

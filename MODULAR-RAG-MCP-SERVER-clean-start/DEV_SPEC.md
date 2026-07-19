@@ -1986,7 +1986,7 @@ dashboard:
 | C4 | Splitter 集成（调用 Libs） | [x] | 2026-07-19 | 支持稳定 Chunk ID、offset、metadata 继承和图片分发 |
 | C5 | Transform 基类 + ChunkRefiner | [x] | 2026-07-19 | 支持规则去噪、LLM 增强、失败回退和基础追踪 |
 | C6 | MetadataEnricher | [x] | 2026-07-19 | 支持规则元数据、LLM 增强和失败回退 |
-| C7 | ImageCaptioner | [ ] | | |
+| C7 | ImageCaptioner | [x] | 2026-07-19 | 支持图片描述、逐图降级和未处理标记 |
 | C8 | DenseEncoder | [ ] | | |
 | C9 | SparseEncoder | [ ] | | |
 | C10 | BatchProcessor | [ ] | | |

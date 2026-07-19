@@ -1,1 +1,2 @@
-Describe the image and preserve information useful for retrieval.
+请准确描述图片中的主体、结构、文字、数据关系和结论，保留有助于知识检索的信息。
+只输出图片描述；无法确认的内容不要猜测。
