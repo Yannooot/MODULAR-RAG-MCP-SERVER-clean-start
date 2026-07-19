@@ -77,7 +77,7 @@
 | C5 | Transform 基类 + ChunkRefiner | [x] | 2026-07-19 | 支持规则去噪、LLM 增强、失败回退和基础追踪 |
 | C6 | MetadataEnricher | [x] | 2026-07-19 | 支持规则元数据、LLM 增强和失败回退 |
 | C7 | ImageCaptioner | [x] | 2026-07-19 | 支持图片描述、逐图降级和未处理标记 |
-| C8 | DenseEncoder | [ ] | | |
+| C8 | DenseEncoder | [x] | 2026-07-19 | 支持批量 Dense 编码、维度校验和 ChunkRecord 输出 |
 | C9 | SparseEncoder | [ ] | | |
 | C10 | BatchProcessor | [ ] | | |
 | C11 | BM25Indexer（倒排索引+IDF计算） | [ ] | | |
