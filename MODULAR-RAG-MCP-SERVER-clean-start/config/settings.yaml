@@ -17,7 +17,7 @@ vision_llm:
 
 embedding:
   provider: ollama
-  model: nomic-embed-text
+  model: bge-m3
   api_key: ${EMBEDDING_API_KEY}
   base_url: ${EMBEDDING_BASE_URL}
 
