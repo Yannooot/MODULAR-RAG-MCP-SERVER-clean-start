@@ -1989,7 +1989,7 @@ dashboard:
 | C7 | ImageCaptioner | [x] | 2026-07-19 | 支持图片描述、逐图降级和未处理标记 |
 | C8 | DenseEncoder | [x] | 2026-07-19 | 支持批量 Dense 编码、维度校验和 ChunkRecord 输出 |
 | C9 | SparseEncoder | [x] | 2026-07-19 | 支持可替换分词、原始 TF 输出和空文本处理 |
-| C10 | BatchProcessor | [ ] | | |
+| C10 | BatchProcessor | [x] | 2026-07-19 | 支持稳定分批、Dense/Sparse 合并和批次耗时 |
 | C11 | BM25Indexer（倒排索引+IDF计算） | [ ] | | |
 | C12 | VectorUpserter（幂等upsert） | [ ] | | |
 | C13 | ImageStorage（图片存储+SQLite索引） | [ ] | | |
