@@ -75,7 +75,7 @@
 | C3 | Loader 抽象基类与 PDF Loader | [x] | 2026-07-19 | 使用 MarkItDown 解析文本并提取图片与占位符 |
 | C4 | Splitter 集成（调用 Libs） | [x] | 2026-07-19 | 支持稳定 Chunk ID、offset、metadata 继承和图片分发 |
 | C5 | Transform 基类 + ChunkRefiner | [x] | 2026-07-19 | 支持规则去噪、LLM 增强、失败回退和基础追踪 |
-| C6 | MetadataEnricher | [ ] | | |
+| C6 | MetadataEnricher | [x] | 2026-07-19 | 支持规则元数据、LLM 增强和失败回退 |
 | C7 | ImageCaptioner | [ ] | | |
 | C8 | DenseEncoder | [ ] | | |
 | C9 | SparseEncoder | [ ] | | |

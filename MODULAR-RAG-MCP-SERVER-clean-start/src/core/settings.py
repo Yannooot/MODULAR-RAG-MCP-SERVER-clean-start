@@ -80,8 +80,16 @@ class ChunkRefinerSettings:
 
 
 @dataclass(frozen=True)
+class MetadataEnricherSettings:
+    use_llm: bool = False
+
+
+@dataclass(frozen=True)
 class IngestionSettings:
     chunk_refiner: ChunkRefinerSettings = field(default_factory=ChunkRefinerSettings)
+    metadata_enricher: MetadataEnricherSettings = field(
+        default_factory=MetadataEnricherSettings
+    )
 
 
 @dataclass(frozen=True)
@@ -180,8 +188,13 @@ def _ingestion_settings(value: Any) -> IngestionSettings:
     section = value if isinstance(value, dict) else {}
     chunk_refiner = section.get("chunk_refiner")
     chunk_refiner_section = chunk_refiner if isinstance(chunk_refiner, dict) else {}
+    metadata_enricher = section.get("metadata_enricher")
+    metadata_enricher_section = (
+        metadata_enricher if isinstance(metadata_enricher, dict) else {}
+    )
     return IngestionSettings(
-        chunk_refiner=ChunkRefinerSettings(**chunk_refiner_section)
+        chunk_refiner=ChunkRefinerSettings(**chunk_refiner_section),
+        metadata_enricher=MetadataEnricherSettings(**metadata_enricher_section),
     )
 
 
