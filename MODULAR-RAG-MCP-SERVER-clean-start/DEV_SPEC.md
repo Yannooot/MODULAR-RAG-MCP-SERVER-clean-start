@@ -1988,7 +1988,7 @@ dashboard:
 | C6 | MetadataEnricher | [x] | 2026-07-19 | 支持规则元数据、LLM 增强和失败回退 |
 | C7 | ImageCaptioner | [x] | 2026-07-19 | 支持图片描述、逐图降级和未处理标记 |
 | C8 | DenseEncoder | [x] | 2026-07-19 | 支持批量 Dense 编码、维度校验和 ChunkRecord 输出 |
-| C9 | SparseEncoder | [ ] | | |
+| C9 | SparseEncoder | [x] | 2026-07-19 | 支持可替换分词、原始 TF 输出和空文本处理 |
 | C10 | BatchProcessor | [ ] | | |
 | C11 | BM25Indexer（倒排索引+IDF计算） | [ ] | | |
 | C12 | VectorUpserter（幂等upsert） | [ ] | | |
