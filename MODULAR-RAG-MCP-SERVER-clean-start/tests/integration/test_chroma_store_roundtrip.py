@@ -98,3 +98,27 @@ def test_records_persist_and_existing_ids_are_updated(tmp_path: Path) -> None:
     assert len(results) == 1
     assert results[0]["id"] == "rag"
     assert results[0]["text"] == "Updated RAG text"
+
+
+@pytest.mark.integration
+def test_nested_metadata_roundtrips_through_chroma(tmp_path: Path) -> None:
+    store = ChromaStore(settings_for(tmp_path / "chroma"))
+    metadata = {
+        "images": [{"id": "image-1", "position": {"x": 1.0}}],
+        "tags": [],
+        "optional": None,
+    }
+
+    store.upsert(
+        [
+            {
+                "id": "nested",
+                "text": "Nested metadata",
+                "metadata": metadata,
+                "vector": [1.0, 0.0],
+            }
+        ]
+    )
+    result = store.query([1.0, 0.0], top_k=1)[0]
+
+    assert result["metadata"] == metadata

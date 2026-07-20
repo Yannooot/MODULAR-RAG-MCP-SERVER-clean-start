@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 from collections.abc import Mapping
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
@@ -13,6 +14,9 @@ from libs.vector_store.base_vector_store import BaseVectorStore
 
 if TYPE_CHECKING:
     from core.trace.trace_context import TraceContext
+
+
+JSON_METADATA_PREFIX = "__modular_rag_json_v1__:"
 
 
 class ChromaStore(BaseVectorStore):
@@ -48,7 +52,7 @@ class ChromaStore(BaseVectorStore):
             record_id, text, metadata, vector = self._validate_record(record, index)
             ids.append(record_id)
             documents.append(text)
-            metadatas.append(metadata or None)
+            metadatas.append(self._encode_metadata(metadata) or None)
             embeddings.append(vector)
 
         self._collection.upsert(
@@ -121,10 +125,35 @@ class ChromaStore(BaseVectorStore):
             {
                 "id": record_id,
                 "text": document or "",
-                "metadata": metadata or {},
+                "metadata": ChromaStore._decode_metadata(metadata or {}),
                 "score": 1.0 / (1.0 + max(float(distance), 0.0)),
             }
             for record_id, document, metadata, distance in zip(
                 ids, documents, metadatas, distances, strict=True
             )
         ]
+
+    @staticmethod
+    def _encode_metadata(metadata: dict[str, Any]) -> dict[str, Any]:
+        encoded: dict[str, Any] = {}
+        for key, value in metadata.items():
+            if value is None or isinstance(value, (dict, list)):
+                encoded[key] = JSON_METADATA_PREFIX + json.dumps(
+                    value, ensure_ascii=False, separators=(",", ":")
+                )
+            else:
+                encoded[key] = value
+        return encoded
+
+    @staticmethod
+    def _decode_metadata(metadata: dict[str, Any]) -> dict[str, Any]:
+        decoded: dict[str, Any] = {}
+        for key, value in metadata.items():
+            if isinstance(value, str) and value.startswith(JSON_METADATA_PREFIX):
+                try:
+                    decoded[key] = json.loads(value[len(JSON_METADATA_PREFIX) :])
+                    continue
+                except json.JSONDecodeError:
+                    pass
+            decoded[key] = value
+        return decoded
