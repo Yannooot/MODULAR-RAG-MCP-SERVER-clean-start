@@ -1992,7 +1992,7 @@ dashboard:
 | C10 | BatchProcessor | [x] | 2026-07-19 | 支持稳定分批、Dense/Sparse 合并和批次耗时 |
 | C11 | BM25Indexer（倒排索引+IDF计算） | [x] | 2026-07-20 | 支持倒排索引、IDF、原子持久化和增量更新 |
 | C12 | VectorUpserter（幂等upsert） | [x] | 2026-07-20 | 支持稳定 ID、批量写入和元数据保留 |
-| C13 | ImageStorage（图片存储+SQLite索引） | [ ] | | |
+| C13 | ImageStorage（图片存储+SQLite索引） | [x] | 2026-07-20 | 支持图片原子写入、SQLite 映射和 WAL 并发 |
 | C14 | Pipeline 编排（MVP 串起来） | [ ] | | |
 | C15 | 脚本入口 ingest.py | [ ] | | |
 
